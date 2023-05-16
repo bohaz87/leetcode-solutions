@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<header>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/graphdracula/1.3.0/dracula.min.js"
+  ></script>
+  <script src="../dist/word-ladder.js"></script>
+</header>
+<body>
+  <!-- <div id="canvas>"></div> -->
+  <div id="canvas" style="width: 100px; height: 100px"></div>
+  <script>
+    var g = new Dracula.Graph();
+    const data = ladderLength("hit", "bob", [
+      "hot",
+      "dot",
+      "dog",
+      "lot",
+      "log",
+      "cog",
+      "bob",
+      "bog",
+      "lob",
+      "git",
+      "dit",
+      "did",
+    ]);
+
+    data.forEach((n) => {
+      n.siblings.forEach((p) => {
+        g.addEdge(n.word, p.word);
+      });
+    });
+
+    // g.addEdge("strawberry", "cherry");
+    // g.addEdge("strawberry", "apple");
+    // g.addEdge("strawberry", "tomato");
+
+    // g.addEdge("tomato", "apple");
+    // g.addEdge("tomato", "kiwi");
+
+    // g.addEdge("cherry", "apple");
+    // g.addEdge("cherry", "kiwi");
+
+    var layouter = new Dracula.Layout.Spring(g);
+    layouter.layout();
+
+    var renderer = new Dracula.Renderer.Raphael("#canvas", g, 1000, 1000);
+    renderer.draw();
+  </script>
+</body>

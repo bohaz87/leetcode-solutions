@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <style>
+      body {
+        width: 800px;
+        margin: auto;
+        /* font-family: "arial", "Avenir Next"; */
+        font-family: serif;
+        line-height: 1.58;
+        font-size: 20px;
+      }
+      body > section {
+        margin: 1em 0;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #ccc;
+      }
+      body > section:last-child {
+        border-bottom: none;
+      }
+      body > section > header {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0.5em 0;
+        color: #00a2ff;
+      }
+
+      .company {
+        margin: 1em 0;
+      }
+
+      .company > div:first-child {
+        background-color: rgb(168, 206, 207);
+        margin-bottom: 0.5em;
+        line-height: 2em;
+        padding-left: 0.5em;
+        border-left: 3px solid coral;
+        font-weight: 700;
+      }
+
+      .project > header {
+        line-height: 1.5em;
+        font-weight: 600;
+        margin: 0.7em 0 0.5em;
+        display: list-item;
+        margin-left: 1em;
+      }
+      p {
+        margin: 0.5em 0;
+      }
+      date {
+        float: right;
+        padding-right: 1em;
+      }
+    </style>
+  </header>
+  <body>
+    <div class="personal-info" style="margin-bottom: 2em">
+      <div
+        style="
+          font-size: 30px;
+          font-weight: bold;
+          border-bottom: 3px solid #00a2ff;
+          margin-bottom: 0.5em;
+          color: rgb(22, 74, 94);
+        "
+      >
+        钟海波
+      </div>
+      <div style="">
+        <div style="display: flex">
+          <div style="flex: 1">生日：1987/08</div>
+          <div>性别：男</div>
+        </div>
+        <div style="display: flex">
+          <div style="flex: 1">电话：+86 18602136627</div>
+          <div>邮箱：haibozhong@foxmail.com</div>
+        </div>
+      </div>
+    </div>
+    <section class="summary">
+      <header>简介</header>
+      <div>
+        <ul>
+          <li>强大的技术背景，丰富的网络经验，强大的软技能和团队管理。</li>
+          <li>
+            主要专注于前端架构师设计/构建UI平台，建立UI框架/标准，领导/推动跨多个团队的大型高性能电子商务网站的开发。
+          </li>
+          <li>在推动技术问题和工作模式的全球解决方案方面经验丰富。</li>
+          <li>对技术解决方案有长远眼光</li>
+          <li>关心团队活力，激发团队创新精神。</li>
+        </ul>
+      </div>
+    </section>
+    <section class="Technologies">
+      <header>技术</header>
+      <ul>
+        <li>
+          React, Redux, TypeScript, Jest, NextJS, Mobx, Formik, StyledComponent
+        </li>
+        <li>Express, Server Side Render, BFF, Redis</li>
+        <li>HTML, CSS, Sass, Less, WebComponent, SVG</li>
+        <li>Webpack, Babel, ESLint, Git, Jenkins, Docker</li>
+      </ul>
+    </section>
+    <section class="Experience">
+      <header>工作经历及项目</header>
+      <div class="company">
+        <div>MTS1 Software Engineer, Paypal <date>2020/06 — 现在</date></div>
+        <div class="project">
+          <header>PayPal, China Payout widget</header>
+          <main>
+            <p>
+              带领团队设计并构建了与第三方公司集成的javascript库，帮助用户使用PayPal注册和支付。
+            </p>
+            <p>
+              与团队成员执行职能，协调项目进度，处理跨公司沟通和跨团队协作问题。
+            </p>
+            <p>
+              Widget 被设计为第三方支付流程的基于配置的库。它根据不同的 JSON
+              配置动态生成表单。
+            </p>
+            <p>相关技术：React, Mobx, Formik, TypeScript, GraphQL</p>
+          </main>
+        </div>
+        <div class="project">
+          <header>PayPal, CN Account Serving</header>
+          <main>
+            <p>
+              领导前端团队为 PayPal 中国建设中国本地网站。将前端技术栈和 CI/CD
+              管道设置到阿里云。
+            </p>
+            <p>
+              使用React/NextJS快速搭建网站，与基础设施部门紧密合作，将产品部署在阿里云上，与产品团队紧密沟通，快速迭代。
+            </p>
+            <p>
+              相关技术：Alibaba cloud, Docker, React, NextJS, Redux Saga,
+              Formik, TypeScript, SSO, protobuf
+            </p>
+          </main>
+        </div>
+      </div>
+      <div class="company">
+        <div>MTS1 Software Engineer, eBay <date>2014/10 — 2020/03</date></div>
+        <div class="project">
+          <header>Stubhub Front-end Stack Migration</header>
+          <main>
+            <p>
+              在 UI 平台团队工作，担任 Stubhub 中国前端架构师。领导中国 UI 从
+              Backbone 迁移到 React，并帮助跨团队/区域沟通。
+            </p>
+            <ul>
+              <li>基于 React 为前端设计和设置新的基础设施</li>
+              <li>构建基本/通用组件、共享库和工具</li>
+              <li>领导/推动其他 UI 团队完成迁移</li>
+              <li>作为美国FE队和中国FE队的桥梁。</li>
+            </ul>
+            <p>
+              相关技术：React, Redux, Vue, SSR, SEO, NodeJS, JEST, Nightwatch
+            </p>
+          </main>
+        </div>
+        <div class="project">
+          <header>Stubhub SEO Project</header>
+          <content>
+            <p>
+              重新设计网站和产品目录的 SEO 结构以提高网站 SEO
+              性能，推动项目并帮助跨团队开发新功能以支持这一变化，与营销部门合作跟踪改进和设计/构建工具以标记团队以快速创建静态内容。与团队合作实施和跟踪
+              SEO 功能。
+            </p>
+            <p>
+              相关技术：express middleware, SSR, pretender, href lang, Google
+              search result features.
+            </p>
+          </content>
+        </div>
+        <div class="project">
+          <header>Stubhub International Expansion</header>
+          <p>
+            FE 负责 Stubhub
+            门票国际扩张和维持的负责人。为国际推出新网站。为国际站点添加新的/特定的功能。设计站点
+            i18n/l10n 解决方案以支持全球和本地。为跨 GEO 工作模型驱动设计新的
+            git 工作模型。
+          </p>
+          <p>相关技术：BackboneJS, jQuery, underscoreJS, I18n and L10n</p>
+        </div>
+        <div class="project">
+          <header>Stubhub Seat Map</header>
+          <content>
+            初始化一个新项目，为场地座位图建立一个库。与供应商合作设计一个新的解决方案来支持座椅级
+            SVG 库。
+          </content>
+        </div>
+      </div>
+      <div class="company">
+        <div>
+          高级前端开发工程师，上海爱数有限公司
+          <date>2011/10 — 2014/03</date>
+        </div>
+        <div class="project">
+          <header>爱数备份平台</header>
+          <p>使用 ExtJS 备份产品的 SPA UI 设置。</p>
+          <p>相关技术：ExtJS, LAMP</p>
+        </div>
+      </div>
+      <div class="company">
+        <div>
+          <span>PHP开发工程师，上海律氏有限公司</span>
+          <date>2011/04 — 2011/09</date>
+        </div>
+        <div class="project">
+          <header>公司网站建设</header>
+          <p>使用 LAMP 和 jQuery 开发站点功能。建立一个关于法律的微博网站。</p>
+          <p>相关技术：jQuery, LAMP</p>
+        </div>
+      </div>
+      <div class="company">
+        <div>
+          PHP开发工程师，上海爱数有限公司
+          <date>2009/09 — 2011/04</date>
+        </div>
+        <div class="project">
+          <header>爱数内部管理系统</header>
+          <p>使用LAMP实现类似OA的人事管理、报销、绩效考核系统等平台。</p>
+          <p>相关技术：jQuery, LAMP</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <header>教育</header>
+      <div>
+        <p>2005-2009，武汉大学，软件工程，学士</p>
+        <p>英语：CET - 4</p>
+      </div>
+    </section>
+  </body>
+</html>
