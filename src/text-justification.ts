@@ -3,12 +3,12 @@
  * @param {number} maxWidth
  * @return {string[]}
  */
-const fullJustify = function (words, maxWidth) {
+const fullJustify = function (words: string[], maxWidth: number): string[] {
   const res = [];
   let currentWordsLen = 0;
-  let currentWords = [];
+  let currentWords: string[] = [];
 
-  for (let word of words) {
+  for (const word of words) {
     // at least one space between each word
     if (currentWordsLen + word.length + currentWords.length <= maxWidth) {
       currentWords.push(word);
@@ -64,31 +64,8 @@ fullJustify(
   ],
   20
 );
-// fullJustify(
-//   ["This", "is", "an", "example", "of", "text", "justification."],
-//   16
-// );
+fullJustify(
+  ["This", "is", "an", "example", "of", "text", "justification."],
+  30
+);
 // fullJustify(["What", "must", "be", "acknowledgment", "shall", "be"], 16);
-// fullJustify(
-//   [
-//     "Science",
-//     "is",
-//     "what",
-//     "we",
-//     "understand",
-//     "well",
-//     "enough",
-//     "to",
-//     "explain",
-//     "to",
-//     "a",
-//     "computer.",
-//     "Art",
-//     "is",
-//     "everything",
-//     "else",
-//     "we",
-//     "do",
-//   ],
-//   20
-// );

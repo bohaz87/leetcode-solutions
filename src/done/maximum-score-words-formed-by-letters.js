@@ -39,7 +39,7 @@ const maxScoreWords = function (words, letters, scores) {
         return match;
     }
     function checkWords(words) {
-        const tableCopy = { ...tableWithCount };
+        const tableCopy = Object.assign({}, tableWithCount);
         return !words.some((word) => {
             return !checkWord(word.word, tableCopy);
         });
@@ -58,7 +58,7 @@ const maxScoreWords = function (words, letters, scores) {
         .map((o) => ({ item: o, score: getScore(o) }))
         .sort((a, b) => b.score - a.score);
     const match = allWithScore.find((item) => checkWords(item.item));
-    return match?.score || 0;
+    return (match === null || match === void 0 ? void 0 : match.score) || 0;
 };
 function Combinatorics(arr, m) {
     const n = arr.length;

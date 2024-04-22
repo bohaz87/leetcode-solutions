@@ -1,4 +1,4 @@
-import task from "./microTask";
+import task from "./microTask.js";
 
 const PromiseStateSymbol = Symbol("PromiseState");
 const PromiseResultSymbol = Symbol("PromiseResult");
@@ -9,29 +9,18 @@ enum PromiseStatus {
   REJECTED = "rejected",
 }
 
-type resolver<T> = (value?: T) => void;
-type rejector = (reason?: unknown) => void;
-
-type Wait<T> = T extends null | undefined
-  ? T
-  : T extends PromiseLike<infer K>
-  ? K
-  : T;
-
-type PromiseLike<T> =
-  | MyPromise<T>
-  | Promise<T>
-  | {
-      then: (res: (value?: T) => void, rej: (reason?: unknown) => void) => void;
-    };
-
-export default class MyPromise<T> {
+export default class MyPromise<ValueType> {
   [PromiseStateSymbol]: PromiseStatus;
-  [PromiseResultSymbol]: T | undefined;
-  #onFulfilledCallbacks: ((value: T) => void)[];
-  #onRejectedCallbacks: rejector[];
+  [PromiseResultSymbol]: ValueType | undefined;
+  #onFulfilledCallbacks: ((value: ValueType) => void)[];
+  #onRejectedCallbacks: ((reason?: unknown) => void)[];
 
-  constructor(fn: (resolve: resolver<T>, reject: rejector) => void) {
+  constructor(
+    fn: (
+      resolve: (value?: ValueType) => void,
+      reject: (reason?: unknown) => void
+    ) => void
+  ) {
     this[PromiseStateSymbol] = PromiseStatus.PENDDING;
     this.#onFulfilledCallbacks = [];
     this.#onRejectedCallbacks = [];
@@ -41,7 +30,7 @@ export default class MyPromise<T> {
 
   #resolvePromiseX(value?: unknown): void {
     if (typeof value === "undefined" || value === null) {
-      this.#dofulfill(value as unknown as T);
+      this.#dofulfill(value as unknown as ValueType);
     } else if (value instanceof MyPromise) {
       if (value === this) {
         throw new TypeError(
@@ -81,7 +70,7 @@ export default class MyPromise<T> {
                 this.#resolvePromiseX(y);
               }
             },
-            (reason: unknown) => {
+            <T>(reason: T) => {
               if (!called) {
                 called = true;
                 this.#doreject(reason);
@@ -94,14 +83,14 @@ export default class MyPromise<T> {
           }
         }
       } else {
-        this.#dofulfill(value as unknown as T);
+        this.#dofulfill(value as unknown as ValueType);
       }
     } else {
-      this.#dofulfill(value as unknown as T);
+      this.#dofulfill(value as unknown as ValueType);
     }
   }
 
-  #dofulfill(value: T): void {
+  #dofulfill(value: ValueType): void {
     if (this[PromiseStateSymbol] !== PromiseStatus.PENDDING) {
       // console.warn("promise already %s", this[PromiseStateSymbol]);
       return;
@@ -140,44 +129,39 @@ export default class MyPromise<T> {
     Object.freeze(this);
   }
 
-  then(): MyPromise<T>;
-  then(
-    onFulfilled: null | undefined,
-    onRejected?: null | undefined
-  ): MyPromise<T>;
-  then<K>(onFulfilled: (value: T) => K | PromiseLike<K>): MyPromise<K>;
-  then<L>(
-    onFulfilled: null | undefined,
-    onRejected: (reason: unknown) => L | PromiseLike<L>
+  then(): MyPromise<ValueType>;
+  then(onFulfilled: null, onRejected: null): MyPromise<ValueType>;
+  then<K>(onFulfilled: (value: ValueType) => K | PromiseLike<K>): MyPromise<K>;
+  then<L, R>(
+    onFulfilled: null,
+    onRejected: (reason: R) => L | PromiseLike<L>
   ): MyPromise<L>;
   then<K, L>(
-    onFulfilled: (value: T) => K | PromiseLike<K>,
+    onFulfilled: (value: ValueType) => K | PromiseLike<K>,
     onRejected: (reason: unknown) => L | PromiseLike<L>
   ): MyPromise<K | L>;
 
   then<K, L>(
-    onFulfilled?: null | ((value: T) => K | PromiseLike<K>),
+    onFulfilled?: null | ((value: ValueType) => K | PromiseLike<K>),
     onRejected?: null | ((reason: unknown) => L | PromiseLike<L>)
-  ): MyPromise<T | K | L> {
+  ): MyPromise<ValueType | K | L> {
     if (typeof onFulfilled !== "function") {
-      onFulfilled = undefined;
+      onFulfilled = null;
     }
     if (typeof onRejected !== "function") {
-      onRejected = undefined;
+      onRejected = null;
     }
 
-    let _resolve: resolver<T | K | L>;
-    let _reject: rejector;
+    let _resolve: <T extends ValueType | K | L>(value?: T) => void;
+    let _reject: <T>(value?: T) => void;
 
-    const newPromise = new MyPromise<T | K | L>(
-      (resolve: resolver<T | K | L>, reject: rejector) => {
-        _resolve = resolve;
-        _reject = reject;
-      }
-    );
+    const newPromise = new MyPromise<ValueType | K | L>((resolve, reject) => {
+      _resolve = resolve;
+      _reject = reject;
+    });
 
-    const doFulfill = (value: T) => {
-      if (!onFulfilled) {
+    const doFulfill = (value: ValueType) => {
+      if (onFulfilled === null || typeof onFulfilled === "undefined") {
         _resolve(value);
         return;
       }
@@ -189,8 +173,8 @@ export default class MyPromise<T> {
       }
     };
 
-    const doReject: rejector = (reason?: unknown) => {
-      if (!onRejected) {
+    const doReject = (reason: unknown) => {
+      if (onRejected === null || typeof onRejected === "undefined") {
         _reject(reason);
         return;
       }
@@ -202,33 +186,23 @@ export default class MyPromise<T> {
       }
     };
 
-    // const p1 = new Promise()
-    // p1.then(onFulfilled, onRejected)
     if (this[PromiseStateSymbol] === PromiseStatus.PENDDING) {
-      // this.then(doFulfill, doReject);
       this.#onFulfilledCallbacks.push(doFulfill);
       this.#onRejectedCallbacks.push(doReject);
-    }
-    // const p1 = Promise.resolve()
-    // await p1
-    // p1.then(onFulfilled, onRejected)
-    else if (this[PromiseStateSymbol] === PromiseStatus.FULLFILLED) {
+    } else if (this[PromiseStateSymbol] === PromiseStatus.FULLFILLED) {
       task(() => {
-        doFulfill(this[PromiseResultSymbol] as T);
+        doFulfill(this[PromiseResultSymbol] as ValueType);
       });
-    }
-    // const p1 = Promise.reject()
-    // await p1
-    // p1.then(onFulfilled, onRejected)
-    else {
+    } else {
+      // Promise.reject(e).then(null, (reason) => {})
       task(() => {
-        doReject(this[PromiseResultSymbol]);
+        doReject(this[PromiseResultSymbol] as never);
       });
     }
     return newPromise;
   }
 
-  catch<K>(onError: (reason: unknown) => K): MyPromise<K> {
+  catch<R, T>(onError: (reason: R) => T): MyPromise<T> {
     return this.then(null, onError);
   }
 
@@ -244,14 +218,14 @@ export default class MyPromise<T> {
    * @param value A promise.
    * @returns A promise whose internal state matches the provided promise.
    */
-  static resolve<T>(value: T): MyPromise<Wait<T>>;
+  static resolve<T>(value: T): MyPromise<T>;
   static resolve<T>(value?: T): MyPromise<T> {
     return new MyPromise((resolve) => {
       resolve(value);
     });
   }
 
-  static reject(reason?: unknown): MyPromise<never> {
+  static reject<T>(reason?: T): MyPromise<never> {
     return new MyPromise<never>((_resolve, reject) => {
       reject(reason);
     });

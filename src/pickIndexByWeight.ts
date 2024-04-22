@@ -2,10 +2,9 @@
  * https://leetcode.cn/problems/cuyjEf/
  */
 class Solution {
-  /**
-   * @param {number[]} weights
-   */
-  constructor(weights) {
+  items: number[];
+
+  constructor(weights: number[]) {
     const totalWeights = weights.reduce((sum, value) => sum + value, 0);
 
     let sum = 0;
@@ -20,19 +19,20 @@ class Solution {
     }
   }
 
-  /**
-   * @returns {number}
-   */
-  pickIndex() {
+  pickIndex(): number {
     /**
      * 0------------------------------------------------>totalSum
      * 0---item0----|---item1----|...|---item x----|...
      * 0-----------------random---------------------
      */
     const n = Math.random();
-    for (let i = 0; i < this.items.length; i++) {
+    let i = 0;
+    for (; i < this.items.length; i++) {
       if (n > this.items[i]) continue;
-      return i;
+      break;
     }
+    return i;
   }
 }
+
+export default Solution;

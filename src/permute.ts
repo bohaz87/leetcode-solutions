@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-const permute = function (nums) {
+const permute = function (nums: number[]): number[][] {
   const len = nums.length;
   if (len === 0) {
     return [];

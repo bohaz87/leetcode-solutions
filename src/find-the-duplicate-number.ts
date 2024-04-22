@@ -2,15 +2,15 @@
  * @param {number[]} nums
  * @return {number}
  */
-const findDuplicate = function (nums) {
-  let len = nums.length;
+const findDuplicate = function (nums: number[]) {
+  const len = nums.length;
 
   const flagLen = 30;
   const flags = Array(Math.ceil(len / flagLen)).fill(0);
 
   for (let i = 0; i < len; i++) {
     const flagIndex = Math.floor(nums[i] / flagLen);
-    let flag = flags[flagIndex];
+    const flag = flags[flagIndex];
     const movement = (nums[i] % flagLen) - 1;
     if ((flag >> movement) & 1) {
       return nums[i];
