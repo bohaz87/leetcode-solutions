@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "promises-aplus-tests" {
-  const promisesAplusTests: (adapter: any, fn: (...args: any[]) => any) => void;
+  interface PromisesAplusTests {
+    (adapter: any, fn: (...args: any[]) => any): void;
+    mocha: (adapter: any) => void;
+  }
+  const promisesAplusTests: PromisesAplusTests;
   export default promisesAplusTests;
 }

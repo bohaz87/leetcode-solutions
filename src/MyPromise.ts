@@ -1,4 +1,4 @@
-import task from "./microTask.js";
+import task from "./microTask";
 
 const PromiseStateSymbol = Symbol("PromiseState");
 const PromiseResultSymbol = Symbol("PromiseResult");
@@ -9,11 +9,11 @@ enum PromiseStatus {
   REJECTED = "rejected",
 }
 
-export default class MyPromise<ValueType> {
+class MyPromise<ValueType> {
   [PromiseStateSymbol]: PromiseStatus;
   [PromiseResultSymbol]: ValueType | undefined;
   #onFulfilledCallbacks: ((value: ValueType) => void)[];
-  #onRejectedCallbacks: ((reason?: unknown) => void)[];
+  #onRejectedCallbacks: ((reason: unknown) => void)[];
 
   constructor(
     fn: (
@@ -104,7 +104,7 @@ export default class MyPromise<ValueType> {
     Object.freeze(this);
   }
 
-  #doreject(reason?: unknown): void {
+  #doreject(reason: unknown): void {
     if (this[PromiseStateSymbol] !== PromiseStatus.PENDDING) {
       // console.warn("promise already %s", this[PromiseStateSymbol]);
       return;
@@ -231,3 +231,5 @@ export default class MyPromise<ValueType> {
     });
   }
 }
+
+export default MyPromise;

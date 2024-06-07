@@ -175,3 +175,5 @@ function test() {
 }
 
 test();
+
+export {};

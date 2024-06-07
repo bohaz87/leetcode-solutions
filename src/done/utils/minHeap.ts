@@ -34,7 +34,6 @@ export default class MinHeap<T> {
         parent = Math.ceil(current / 2) - 1;
       }
     }
-    console.log(this.#data);
   }
 
   remove(): T | null {

@@ -37,11 +37,6 @@ const isSelfCrossing = function (distance: number[]): boolean {
   for (let i = 3; i < lines.length; i++) {
     for (let j = Math.max(i - 5, 0); j < i - 1; j++) {
       if (Line.isCrossing(lines[i], lines[j])) {
-        console.log(
-          `line ${i} and ${j} is Corssing`,
-          lines[i].toString(),
-          lines[j].toString()
-        );
         return true;
       }
     }

@@ -9,7 +9,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jest"],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "no-var": "error"

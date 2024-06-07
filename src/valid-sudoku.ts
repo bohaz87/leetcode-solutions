@@ -1,13 +1,7 @@
-/**
- * @param {character[][]} board
- * @return {boolean}
- */
-const isValidSudoku = function (board) {
-  /**
-   * @param {character[]} box
-   * @return {boolean}
-   */
-  const isValidBox = function (...box) {
+type SudoItem = "." | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
+
+const isValidSudoku = function (board: SudoItem[][]): boolean {
+  const isValidBox = function (...box: SudoItem[]): boolean {
     const check = Array(9);
     for (const ch of box) {
       if (ch === ".") continue;
