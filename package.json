@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "watch": "tsc -w -p ."
+    "watch": "tsc -w -p .",
+    "build:babel": "babel src --out-dir build --watch"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,8 @@
   },
   "type": "module",
   "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "^29.5.12",

@@ -1,4 +1,7 @@
 class TreeNode {
+  static fromArray(arg0: (number | null)[]) {
+    throw new Error("Method not implemented.");
+  }
   val: number;
   left: TreeNode | null;
   right: TreeNode | null;

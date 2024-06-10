@@ -17,6 +17,7 @@
 //       arr.push(node.val);
 //     }
 
+import exp from "constants";
 import ListNode from "../utils/ListNode.js";
 
 //     if (node.val < 0) {
@@ -88,3 +89,5 @@ console.log(removeZeroSumSublists(a));
 console.log(removeZeroSumSublists(arr2List([1, 2, 3, -3, 4])));
 console.log(removeZeroSumSublists(arr2List([1, 2, 3, -3, -2])));
 console.log(removeZeroSumSublists(arr2List([1, 3, 2, -3, -2, 5, 5, -5, 1])));
+
+export {};
