@@ -1,14 +1,17 @@
 {
   "env": {
-    "node": true,
-    "es2021": true
+    "browser": true,
+    "es2021": true,
+    "node": true
   },
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "jest"],
-  "rules": {}
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "no-var": "error"
+  }
 }
