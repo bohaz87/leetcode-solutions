@@ -2,7 +2,6 @@ import { IntensitySegments } from "./IntensitySegments";
 import assert from "assert";
 
 describe("IntensitySegments", () => {
-  test("ignored", () => {});
   test("IntensitySegments", () => {
     const segments = new IntensitySegments();
     // Here is an example sequence:

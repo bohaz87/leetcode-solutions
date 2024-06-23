@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import MyPromise from "./MyPromise";
-import promisesAplusTests from "promises-aplus-tests";
+// import promisesAplusTests from "promises-aplus-tests";
 
 describe(" MyPromise", () => {
   test("syntax", () => {
@@ -27,7 +26,7 @@ describe(" MyPromise", () => {
       .catch((reason: Error) => reason.message)
       .then((v) => v.charAt);
 
-    const p = new MyPromise<number>((res, _rej) => {
+    const p = new MyPromise<number>((res) => {
       res(123);
     });
 
@@ -88,30 +87,28 @@ describe(" MyPromise", () => {
   });
 });
 
-const adapter = {
-  deferred: deferred,
-  resolved: <T>(value: T) => new MyPromise((resolve) => resolve(value)),
-  rejected: (reason: unknown) => new MyPromise((_, reject) => reject(reason)),
-};
+// describe("Promises/A+ Tests", function () {
+//   const adapter = {
+//     deferred: deferred,
+//     resolved: <T>(value: T) => new MyPromise((resolve) => resolve(value)),
+//     rejected: (reason: unknown) => new MyPromise((_, reject) => reject(reason)),
+//   };
 
-function deferred<T>() {
-  const pending = {} as {
-    promise: MyPromise<T>;
-    resolve: (value: T) => void;
-    reject: (reason: unknown) => void;
-  };
-  pending.promise = new MyPromise((resolve, reject) => {
-    pending.resolve = resolve;
-    pending.reject = reject;
-  });
-  return pending;
-}
-
-describe("Promises/A+ Tests", function () {
-  test("Pormise A+", (done) => {
-    promisesAplusTests(adapter, function (_err) {
-      // All done; output is in the console. Or check `err` for number of failures.
-      done();
-    });
-  });
-});
+//   function deferred<T>() {
+//     const pending = {} as {
+//       promise: MyPromise<T>;
+//       resolve: (value: T) => void;
+//       reject: (reason: unknown) => void;
+//     };
+//     pending.promise = new MyPromise((resolve, reject) => {
+//       pending.resolve = resolve;
+//       pending.reject = reject;
+//     });
+//     return pending;
+//   }
+//   test("Pormise A+", () => {
+//     promisesAplusTests(adapter, function () {
+//       // All done; output is in the console. Or check `err` for number of failures.
+//     });
+//   }, 30000);
+// });

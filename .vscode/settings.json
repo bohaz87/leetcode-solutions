@@ -1,0 +1,5 @@
+{
+  "jestrunner.jestPath": "",
+  "jestrunner.codeLens": ["run", "debug", "watch"],
+  "jestrunner.jestCommand": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" npx jest"
+}

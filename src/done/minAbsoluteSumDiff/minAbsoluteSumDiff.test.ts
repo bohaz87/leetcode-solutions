@@ -1,7 +1,8 @@
-import minAbsoluteSumDiff from "./minAbsoluteSumDiff.js";
+import minAbsoluteSumDiff from "./minAbsoluteSumDiff";
 import fs from "fs";
 import path from "path";
 import { strict as assert } from "assert";
+import url from "url";
 
 describe("minAbsoluteSumDiff", () => {
   test("minAbsoluteSumDiff", () => {
@@ -33,9 +34,15 @@ describe("minAbsoluteSumDiff", () => {
       3441
     );
     const dataArr = fs
-      .readFileSync(path.join(__dirname, "./data.txt"), {
-        encoding: "utf-8",
-      })
+      .readFileSync(
+        path.join(
+          path.dirname(url.fileURLToPath(import.meta.url)),
+          "./data.txt"
+        ),
+        {
+          encoding: "utf-8",
+        }
+      )
       .split("\n");
 
     const nums1 = JSON.parse(dataArr[0]);
