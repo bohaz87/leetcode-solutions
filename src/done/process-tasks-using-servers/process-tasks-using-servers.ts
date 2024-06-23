@@ -296,7 +296,7 @@ assert.deepEqual(a, b, "case end");
 import fs from "fs";
 Array(5)
   .fill(0)
-  .forEach((x, i) => {
+  .forEach((_, i) => {
     i = i + 1;
     const data = fs
       .readFileSync(`./src/process-tasks-using-servers/data${i}.txt`, {

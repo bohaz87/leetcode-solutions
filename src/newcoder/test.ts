@@ -4,8 +4,6 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-let N = 0;
 let M = 0;
 let lineCount = 0;
 let scores: number[];
@@ -14,7 +12,7 @@ const queryResults: number[] = [];
 rl.on("line", function (line: string) {
   const tokens = line.split(" ");
   if (lineCount === 0) {
-    [N, M] = [Number(tokens[0]), Number(tokens[1])];
+    M = [Number(tokens[0]), Number(tokens[1])][1];
   } else if (lineCount === 1) {
     scores = tokens.map((str) => Number(str));
   } else {

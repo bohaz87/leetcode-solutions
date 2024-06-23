@@ -40,6 +40,7 @@ class MyStr {
         match = false;
         return true;
       }
+      return false;
     });
     return match;
   }

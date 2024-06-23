@@ -229,6 +229,7 @@ class Sudu {
             );
             return true;
           }
+          return false;
         });
 
         if (invalidate) {

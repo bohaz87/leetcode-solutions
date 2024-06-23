@@ -6,7 +6,7 @@ const maxScoreWords = function (
   const codeA = "a".charCodeAt(0);
 
   const table: string[] = Array(26).fill("a");
-  table.map((ch, i) => String.fromCharCode(codeA + i));
+  table.map((_, i) => String.fromCharCode(codeA + i));
 
   const tableWithCount = letters.reduce((t, ch) => {
     t[ch] = t[ch] + 1 || 1;
@@ -63,7 +63,7 @@ const maxScoreWords = function (
     }, 0);
   }
 
-  const all: typeof wordsWithScore[] = [];
+  const all: (typeof wordsWithScore)[] = [];
   for (let i = wordsWithScore.length; i >= 0; i--) {
     all.push(...Combinatorics(wordsWithScore, i));
   }

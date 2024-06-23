@@ -1,6 +1,6 @@
 class TreeNode {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  static fromArray(arg0: (number | null)[]) {
+  static fromArray(_: (number | null)[]) {
     throw new Error("Method not implemented.");
   }
   val: number;

@@ -5,12 +5,12 @@ import promisesAplusTests from "promises-aplus-tests";
 describe(" MyPromise", () => {
   test("syntax", () => {
     MyPromise.resolve(123).then((value) => value.toFixed);
-    MyPromise.resolve(123).then((value) => (value = 456));
-    MyPromise.resolve().then((val) => (val = void 0));
-    MyPromise.resolve(undefined).then((val) => (val = undefined));
+    MyPromise.resolve(123).then((value) => ((value = 456), value));
+    MyPromise.resolve().then((val) => ((val = void 0), val));
+    MyPromise.resolve(undefined).then((val) => ((val = undefined), val));
     MyPromise.resolve(123)
       .then(() => "456")
-      .then((val) => (val = "123"));
+      .then((val) => ((val = "123"), val));
     MyPromise.resolve("abc").then((value) => value.substring(1));
     MyPromise.resolve("abc").then(() => "efc");
     MyPromise.resolve("abc")
@@ -69,7 +69,7 @@ describe(" MyPromise", () => {
       val;
     });
 
-    new MyPromise<undefined>((res, rej) => {
+    new MyPromise<undefined>((_, rej) => {
       MyPromise.resolve(123).then(() => rej());
     }).then((val) => {
       val;
@@ -81,8 +81,8 @@ describe(" MyPromise", () => {
       val;
     });
 
-    const a = Promise.resolve(Promise.resolve(1));
-    const b = MyPromise.resolve(MyPromise.resolve(1));
+    Promise.resolve(Promise.resolve(1));
+    MyPromise.resolve(MyPromise.resolve(1));
 
     MyPromise.resolve();
   });
@@ -91,8 +91,7 @@ describe(" MyPromise", () => {
 const adapter = {
   deferred: deferred,
   resolved: <T>(value: T) => new MyPromise((resolve) => resolve(value)),
-  rejected: (reason: unknown) =>
-    new MyPromise((resolve, reject) => reject(reason)),
+  rejected: (reason: unknown) => new MyPromise((_, reject) => reject(reason)),
 };
 
 function deferred<T>() {
@@ -108,11 +107,11 @@ function deferred<T>() {
   return pending;
 }
 
-// describe("Promises/A+ Tests", function () {
-//   test("Pormise A+", (done) => {
-//     promisesAplusTests(adapter, function (err) {
-//       // All done; output is in the console. Or check `err` for number of failures.
-//       done();
-//     });
-//   });
-// });
+describe("Promises/A+ Tests", function () {
+  test("Pormise A+", (done) => {
+    promisesAplusTests(adapter, function (_err) {
+      // All done; output is in the console. Or check `err` for number of failures.
+      done();
+    });
+  });
+});

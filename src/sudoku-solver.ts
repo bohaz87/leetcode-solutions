@@ -235,6 +235,7 @@ class Board {
         }
       }
     }
+    return undefined;
   }
 
   isResolved() {

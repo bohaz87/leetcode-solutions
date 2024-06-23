@@ -2,12 +2,8 @@ type PartialArray<
   T extends unknown[],
   AllowEmpty extends boolean = true,
   C extends unknown[] = []
-> = T extends [
-  ...C,
-  infer N,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ...infer R
-]
+> = T extends [...C, infer N, ...infer _Rest]
   ? [...C, N] | PartialArray<T, AllowEmpty, [...C, N]>
   : AllowEmpty extends true
   ? []
@@ -53,22 +49,6 @@ type Curried<
       : never
     : never
 >;
-
-type CC = Curried<[1, "2", true], number>;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function ff(f: CC) {
-  f(1);
-  let n: number;
-  n = f(1, "2")()()(true);
-  n = f(1, "2")()()(true);
-  n = f(1, "2", true);
-  n = f(1)("2", true);
-  n = f(1, "2")(true);
-  // @ts-expect-error end fn
-  n = f(1, "2")(true)();
-  return n;
-}
 
 function currying<T extends unknown[], K, Bind extends PartialArray<T>>(
   fn: (...args: T) => K,

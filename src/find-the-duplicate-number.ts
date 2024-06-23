@@ -18,6 +18,7 @@ const findDuplicate = function (nums: number[]) {
       flags[flagIndex] = flag | (1 << movement);
     }
   }
+  return undefined;
 };
 
 console.log(findDuplicate([1, 3, 4, 2, 2]), 2);

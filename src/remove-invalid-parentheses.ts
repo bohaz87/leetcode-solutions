@@ -63,7 +63,6 @@ const removeInvalidParentheses = function (s: string): string[] {
       }
       maxLen = str.length;
       ret.push(str);
-      return true;
     }
   });
   return ret.length === 0 ? [""] : ret;
