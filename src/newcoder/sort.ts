@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 
 let lineCount = 0;
 let N: number | null = null;
-let numbers = new Set<number>();
+const numbers = new Set<number>();
 
 rl.on("line", function (line: string) {
   if (lineCount === 0) {

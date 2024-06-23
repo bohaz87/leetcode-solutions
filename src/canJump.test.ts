@@ -1,4 +1,4 @@
-var canJump = function (nums: number[]): boolean {
+const canJump = function (nums: number[]): boolean {
   let k = 0;
   for (const [i, v] of nums.entries()) {
     if (i > k) return false;

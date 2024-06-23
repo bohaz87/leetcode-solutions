@@ -79,7 +79,7 @@ class SudoNode {
       );
 
     const values = this.possibleValues;
-    let oldSize = this.possibleValues.size;
+    const oldSize = this.possibleValues.size;
     this.getGroups().forEach((group) => {
       group.forEach((col) => {
         if (col !== this && col.value !== 0) {
@@ -270,7 +270,6 @@ function play() {
   let strIndex = 0;
 
   for (let i = 0; i < 9; i++) {
-    const cols = [];
     for (let j = 0; j < 9; j++) {
       const ch = str[strIndex];
       const n = ch === "." ? 0 : Number(ch);

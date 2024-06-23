@@ -11,3 +11,5 @@ function diameterOfBinaryTree(root) {
   dfs(root);
   return diameter;
 }
+
+export { diameterOfBinaryTree };

@@ -69,7 +69,7 @@ export default class ListNode<T = number> {
     return head;
   }
 
-  static reverse<T>(head: null): null;
+  static reverse(head: null): null;
   static reverse<T>(head: ListNode<T>): ListNode<T>;
   static reverse<T>(head: ListNode<T> | null): ListNode<T> | null {
     if (!head) return null;

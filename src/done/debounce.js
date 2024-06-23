@@ -1,4 +1,4 @@
-function debounce(fn, delay, immediate) {
+export function debounce(fn, delay, immediate) {
   let tid = null;
   return function (...args) {
     if (tid) {

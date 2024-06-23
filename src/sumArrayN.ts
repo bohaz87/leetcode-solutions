@@ -14,4 +14,4 @@ function sum(arr: number[], N: number): number {
   return sum;
 }
 
-export {};
+export { sum };

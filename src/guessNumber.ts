@@ -67,7 +67,7 @@ class Game {
     return answer.join("");
   }
 
-  *getNextGuess() {
+  *getNextGuess(): Generator<string> {
     yield this.randomGuess();
 
     for (let a = 0; a <= 9; a++) {

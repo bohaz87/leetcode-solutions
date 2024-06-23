@@ -94,7 +94,6 @@ const findDiagonalOrder2 = function (mat) {
 
   const size = xlen * ylen;
   const arr = Array(size);
-  let i = 0;
 
   console.time("map ");
   for (let x = 0; x < xlen; x++) {

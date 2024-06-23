@@ -71,7 +71,7 @@ export class IntensitySegments {
     let endIntensity = 0;
     let currentIntensity = 0;
 
-    for (let key of sortedKeys) {
+    for (const key of sortedKeys) {
       if (key >= to) {
         endIntensity = currentIntensity;
         break;

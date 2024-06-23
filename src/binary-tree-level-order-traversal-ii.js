@@ -1,9 +1,8 @@
-import TreeNode from "./utils/btree";
 /**
  * @param {TreeNode} root
  * @return {number[][]}
  */
-const levelOrderBottom = function (root) {
+export const levelOrderBottom = function (root) {
   if (!root) {
     return [];
   }

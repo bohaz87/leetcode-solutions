@@ -1,6 +1,4 @@
-import exp from "constants";
 import TreeNode from "./btree";
-import { hasUncaughtExceptionCaptureCallback } from "process";
 
 describe("tree node", () => {
   test("from array", () => {
