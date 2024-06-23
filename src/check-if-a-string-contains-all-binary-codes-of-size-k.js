@@ -3,7 +3,7 @@
  * @param {number} k
  * @return {boolean}
  */
-const hasAllCodes = function (s, k) {
+export const hasAllCodes = function (s, k) {
   const count = Math.pow(2, k);
   const set = new Set();
   for (let i = 0; i <= s.length - k; i++) {

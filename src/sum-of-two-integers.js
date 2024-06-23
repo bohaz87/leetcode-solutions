@@ -3,18 +3,6 @@ const getSum = function (a, b) {
     return Math.ceil([n, ".1"].join(""));
   }
 
-  function minusOne(n) {
-    const s = n.toString(2);
-    if (/1$/.test(s)) {
-      return parseInt(s.replace(/1$/, "0"), 2);
-    } else {
-      return parseInt(
-        s.replace(/1(0+)$/, (match) => "0".padEnd(match.length, "0")),
-        2
-      );
-    }
-  }
-
   let start = 0;
   let sum = a;
 

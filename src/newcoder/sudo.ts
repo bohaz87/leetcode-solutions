@@ -154,7 +154,7 @@ class Sudu {
         } catch (e) {
           console.error(
             "-----trying failed, revert back. As: ",
-            (e && (e as any)?.message) || String(e)
+            (e && (e as Error)?.message) || String(e)
           );
         }
       }
@@ -263,8 +263,9 @@ const game = new Sudu();
 //   lineCount++;
 // });
 
-const path = require("path");
-const scope = require(path.resolve(__dirname, "./sudoku.js"));
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const scope = require("./sudoku.js");
+
 function play() {
   const str: string = scope.sudoku.generate("inhuman", false);
   let strIndex = 0;

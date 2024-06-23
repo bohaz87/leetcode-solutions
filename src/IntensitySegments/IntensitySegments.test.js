@@ -1,5 +1,5 @@
 import { IntensitySegments } from "./IntensitySegments";
-const assert = require("assert");
+import assert from "assert";
 
 describe("IntensitySegments", () => {
   test("ignored", () => {});

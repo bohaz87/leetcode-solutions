@@ -2,7 +2,7 @@
  *
  * @param {Number[][]} matrix
  */
-const calculateMinimumHP = function (matrix) {
+export const calculateMinimumHP = function (matrix) {
   let xlen = matrix.length;
   let ylen = matrix[0].length;
 

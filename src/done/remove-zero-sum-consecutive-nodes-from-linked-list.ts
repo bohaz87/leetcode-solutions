@@ -17,7 +17,6 @@
 //       arr.push(node.val);
 //     }
 
-import exp from "constants";
 import ListNode from "../utils/ListNode.js";
 
 //     if (node.val < 0) {

@@ -1,4 +1,4 @@
-function sumFourDivisors(nums: number[]): number {
+export function sumFourDivisors(nums: number[]): number {
   let sum = 0;
   for (const n of nums) {
     const divisors = getFourDivisors(n);

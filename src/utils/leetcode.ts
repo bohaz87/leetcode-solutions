@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const leetcode = {
   test(names: any[], args: any[], results: any[]) {
     describe(names[0], () => {

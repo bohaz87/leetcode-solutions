@@ -1,9 +1,10 @@
-const readline = require("readline");
+import readline from "readline";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let N = 0;
 let M = 0;
 let lineCount = 0;

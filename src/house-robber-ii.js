@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
-const rob = function (nums) {
+export const rob = function (nums) {
   if (nums.length === 0) {
     return 0;
   } else if (nums.length <= 3) {
@@ -35,4 +35,3 @@ const rob = function (nums) {
 // console.log(rob([2, 3, 2]), 3);
 // console.log(rob([1, 2, 3, 1]), 4);
 // console.log(rob([]), 0);
-console.log(rob3([1]), 1);

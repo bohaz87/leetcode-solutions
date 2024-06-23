@@ -1,4 +1,4 @@
-class CustomStack {
+export class CustomStack {
   constructor(maxSize) {
     this.maxSize = maxSize;
     this.data = [];

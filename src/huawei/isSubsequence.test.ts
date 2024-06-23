@@ -3,9 +3,6 @@
  * https://www.nowcoder.com/questionTerminal/5382ff24fbf34a858b15f93e2bd85307
  */
 
-import { table } from "console";
-import exp from "constants";
-
 describe("isSub", () => {
   test("work", () => {
     expect(isSubsequence("abc", "ahbgdc")).toBe(true);

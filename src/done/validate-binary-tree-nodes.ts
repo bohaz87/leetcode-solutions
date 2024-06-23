@@ -5,7 +5,7 @@ interface BNode {
   value: number;
 }
 
-function validateBinaryTreeNodes2(
+export function validateBinaryTreeNodes2(
   n: number,
   leftChild: number[],
   rightChild: number[]

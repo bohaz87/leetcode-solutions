@@ -1,5 +1,3 @@
-import { count } from "console";
-
 function countZero(row: number[]) {
   let count = 0;
   for (let i = row.length - 1; i >= 0; i--) {

@@ -37,9 +37,9 @@ export class IntensitySegments {
   set(from: number, to: number, amount: number): void {
     if (from >= to) return;
 
-    const [startIntensity, endIntensity] = this.getIntensitiesAt(from, to);
-    this.add(from, to, -startIntensity);  // Reset current range to zero
-    this.add(from, to, amount);  // Set desired intensity
+    const [startIntensity] = this.getIntensitiesAt(from, to);
+    this.add(from, to, -startIntensity); // Reset current range to zero
+    this.add(from, to, amount); // Set desired intensity
   }
 
   /**

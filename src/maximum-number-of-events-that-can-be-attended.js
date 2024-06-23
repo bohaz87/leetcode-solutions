@@ -71,7 +71,7 @@ class MinHeap {
   }
 }
 
-function maxEvents(events) {
+export function maxEvents(events) {
   // sort by start date
   events.sort((a, b) => {
     return a[0] - b[0];

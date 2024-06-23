@@ -1,6 +1,6 @@
 const canJump = function (nums: number[]): boolean {
   let k = 0;
-  for (const [i, v] of nums.entries()) {
+  for (const [i] of nums.entries()) {
     if (i > k) return false;
     k = Math.max(k, i + nums[i]);
   }
