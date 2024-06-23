@@ -1,10 +1,9 @@
-import { strict as assert } from "assert";
 import maxProfit from "./maxProfit";
 
 describe("maxProfit", () => {
   test("maxProfit", () => {
-    assert.equal(maxProfit([7, 1, 5, 3, 6, 4]), 5, "case 1");
-    assert.equal(maxProfit([7, 6, 4, 3, 1]), 0, "case 2");
+    expect(maxProfit([7, 1, 5, 3, 6, 4])).toBe(5);
+    expect(maxProfit([7, 6, 4, 3, 1])).toBe(0);
     maxProfit([
       10000, 9999, 9998, 9997, 9996, 9995, 9994, 9993, 9992, 9991, 9990, 9989,
       9988, 9987, 9986, 9985, 9984, 9983, 9982, 9981, 9980, 9979, 9978, 9977,
